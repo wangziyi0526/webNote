@@ -17,3 +17,37 @@
 - but 我有不同见解理解方式，公司要让你出去办事情，你会自己拿钱帮着公司办么？万一不还咋办，所以还是统一在公司拿钱吧！
   
 #### 怎么在vuex(公司拿钱)呢？
+
+- 走流程！在公司办事你不得走流程么？去找财务小姐姐 说明情况等等的 
+- 那在vuex中呢 怎么弄？
+  
+store.js(公司资源部)
+
+```
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state:{
+    money:100000000
+    // 这么多钱哈哈哈 太刺激了
+  }
+})
+
+```
+
+index.vue (你)
+```
+import { mapState } from 'vuex' // 引入它呢，能帮你映射出来资源
+
+computed: {
+  ...mapState([
+    'money'
+  ])
+}
+
+// 这个时候你就拿到了钱，在你的天地里面挥霍吧！但是挥霍 钱变了 得告诉财务小姐姐(vuex)，怎么告诉呢？肯定不是发微信，打电话
+
+```
