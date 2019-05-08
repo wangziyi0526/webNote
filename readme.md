@@ -4,10 +4,11 @@
 
 ### 准备做笔记的书籍介绍
 
-1. 你不知道的JavaScript
-2. JavaScript设计者模式
-3. JavaScript语言精粹
-4. 新时期的Node.js入门
-5. 等
+1. vuex 逗逼版 (已完成)
+2. 你不知道的JavaScript
+3. JavaScript设计者模式
+4. JavaScript语言精粹
+5. 新时期的Node.js入门
+6. 等
 
 > 希望自己吹过的牛逼，不要随青春一笑了之！
