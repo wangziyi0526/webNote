@@ -32,7 +32,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
     money:100000000
-    // 这么多钱哈哈哈 太刺激了
+     <!-- 这么多钱哈哈哈 太刺激了 -->
   }
 })
 
@@ -48,6 +48,60 @@ computed: {
   ])
 }
 
-// 这个时候你就拿到了钱，在你的天地里面挥霍吧！但是挥霍 钱变了 得告诉财务小姐姐(vuex)，怎么告诉呢？肯定不是发微信，打电话
+ <!-- 这个时候你就拿到了钱，在你的天地里面挥霍吧！但是挥霍 钱变了 得告诉财务小姐姐(vuex)，怎么告诉呢？肯定不是发微信，打电话 -->
+
+```
+#### 告诉公司(vuex)钱数变了 (moutation)
+
+> moutation 在vuex官网中解释说 "更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数"
+
+不正经的时候到了
+
+> 还是用  拿公司的钱  举例子吧
+> 流程 走流程  是吧 你拿着公款，去为公司谈业务，那就涉及到花钱 或者不花钱 亦或者 把客户陪好了，客户给的小费，哈哈哈  开玩笑 总之 你因为什么吧改变了原有的在财务小姐姐哪里的money的数值(store中的state中的money)  那就用moutation去走流程
+
+- 来走流程，
+  
+```
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state:{
+    money:100000000
+     <!-- 这么多钱哈哈哈 太刺激了 -->
+  },
+  <!-- 流程第一步，和小姐姐订好了，我可能会在什么情况下用钱 -->
+  moutation: {
+    <!-- 购物，里面两个参数，第一个呢  就是  上述的money， 第二个n呢 官网说的是载荷 payload
+      shopping么，用钱么 花钱，花store中state的money,所以这个就是第一个参数，那n呢 就是你花多少啊！ 嗯应该是这样 哈哈哈
+     -->
+    shopping (state, n){
+      state.money -= n
+    }
+  }
+})
+
+```
+- 那我们和财务小姐姐(store)打好招呼了，愉快的花钱吧
+
+- index.vue  就是你
+```
+import { mapState } from 'vuex' // 引入它呢，能帮你映射出来资源
+import { mapMoutation} from 'vuex'  // 引入它呢，能帮你映射出来当年大明湖畔的约定
+
+computed: {
+  ...mapState([
+    'money'
+  ])
+},
+<!-- 方法里，实现约定 -->
+methods: {
+  ...mapMutation([
+    'shopping' // 将 `this.shopping()` 映射为 `this.$store.commit('shopping')`
+  ])
+}
 
 ```
